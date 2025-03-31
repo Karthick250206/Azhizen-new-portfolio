@@ -1,0 +1,50 @@
+import React from "react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "../../../../components/ui/navigation-menu";
+
+export const NavigationBarSection = () => {
+  // Navigation menu items data
+  const navItems = [
+    { label: "Home", active: true, href: "/" },
+    { label: "About us", active: false, href: "/about" },
+    { label: "Career", active: false, href: "/career" },
+    { label: "Contact us", active: false, href: "/contact" },
+  ];
+
+  return (
+    <header className="w-full h-[100px] bg-white shadow-[0px_1px_20px_#00000014]">
+      <div className="max-w-[1680px] h-[60px] mx-auto my-5 px-[120px] flex items-center justify-between">
+        {/* Logo */}
+        <img
+          className="w-[238px] h-[50px] object-cover"
+          alt="Aznizen Logo"
+          src="https://c.animaapp.com/i4vFGrX3/img/5-3@4x.png"
+        />
+
+        {/* Navigation Menu */}
+        <NavigationMenu className="ml-auto">
+          <NavigationMenuList className="flex items-center gap-14">
+            {navItems.map((item, index) => (
+              <NavigationMenuItem key={index}>
+                <NavigationMenuLink
+                  href={item.href}
+                  className={`font-['Poppins',Helvetica] text-base leading-6 ${
+                    item.active
+                      ? "font-semibold text-[#0078b4]"
+                      : "font-normal text-black"
+                  }`}
+                >
+                  {item.label}
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+    </header>
+  );
+};
